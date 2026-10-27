@@ -1,21 +1,1050 @@
-<!doctype html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>우리두리사회적협동조합 공식 홈페이지</title>
-    <meta name="description" content="경기도 양주시 비영리법인 우리두리사회적협동조합의 공식 홈페이지입니다. 미술치료, 경기공유학교, 경기여성거버넌스 및 따뜻한 지역사회 공헌 활동을 소개합니다." />
-    <meta property="og:title" content="우리두리사회적협동조합 공식 홈페이지" />
-    <meta property="og:description" content="경기도 양주시 비영리법인 우리두리사회적협동조합의 공식 홈페이지입니다. 사람과 사람을 잇고 배움과 나눔을 실천합니다." />
-    <meta property="og:type" content="website" />
-    <link rel="icon" type="image/png" href="/assets/aistudio/logo_emblem.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-[#FAF8F5] text-[#22252A] antialiased selection:bg-[#2D6A4F] selection:text-white">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="경기도 양주시 우리두리사회적협동조합 공식 홈페이지. 미술치료, 경기공유학교, 경기여성거버넌스 및 지역사회 공헌 활동을 소개합니다.">
+  <meta property="og:title" content="우리두리사회적협동조합 공식 홈페이지">
+  <meta property="og:description" content="사람과 사람을 잇고 배움과 나눔을 실천합니다.">
+  <meta property="og:type" content="website">
+  <title>우리두리사회적협동조합 공식 홈페이지</title>
+  <link rel="icon" type="image/png" href="/assets/aistudio/logo_emblem.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #2D6A4F;
+      --green-dark: #1E4835;
+      --ivory: #FAF8F5;
+      --beige: #F3EFEA;
+      --border: #E8E2D9;
+      --text: #212529;
+      --muted: #6C757D;
+      --white: #FFFFFF;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Noto Sans KR', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      margin: 0;
+      background: var(--ivory);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; }
+
+    h1, h2, h3, .serif {
+      font-family: 'Noto Serif KR', serif;
+    }
+
+    .topbar {
+      padding: 7px 20px;
+      background: var(--green-dark);
+      color: white;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: .04em;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(250,248,245,.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-wrap {
+      max-width: 1200px;
+      margin: auto;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 210px;
+      color: var(--green);
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .brand-name small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: .05em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 22px;
+    }
+
+    nav button, .mobile-nav button {
+      padding: 8px 0;
+      border: 0;
+      background: none;
+      color: #495057;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    nav button:hover, nav button.active { color: var(--green); }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: white;
+      padding: 7px 12px;
+    }
+
+    .mobile-nav {
+      display: none;
+      padding: 10px 24px 20px;
+      border-top: 1px solid var(--border);
+      background: var(--ivory);
+    }
+
+    .mobile-nav.open { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; }
+    .mobile-nav button { text-align: left; }
+
+    main { min-height: 60vh; }
+
+    .container {
+      width: min(100% - 40px, 1050px);
+      margin: auto;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 490px;
+      display: flex;
+      align-items: center;
+      background: #E9E5DC;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .32;
+    }
+
+    .hero-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(250,248,245,.98), rgba(250,248,245,.8) 55%, rgba(250,248,245,.18));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: min(100% - 40px, 1050px);
+      margin: auto;
+      padding: 80px 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+
+    .hero h1 {
+      max-width: 740px;
+      margin: 18px 0;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.35;
+      letter-spacing: -.045em;
+    }
+
+    .hero p {
+      max-width: 620px;
+      color: #555D58;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 19px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: white;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      transition: .2s;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { color: white; background: var(--green); border-color: var(--green); }
+    .btn-primary:hover { background: var(--green-dark); }
+
+    .values-strip {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px 42px;
+      padding: 22px 20px;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .section { padding: 72px 0; }
+    .section-alt { background: #F5F2EB; }
+    .section-head { margin-bottom: 28px; }
+    .section-head h2 { margin: 7px 0 10px; font-size: clamp(25px, 3vw, 34px); }
+    .section-head p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .about-image {
+      width: 100%;
+      min-height: 280px;
+      max-height: 390px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .about-copy p { color: #495057; font-size: 14px; line-height: 2; }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      overflow: hidden;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      transition: .2s;
+    }
+
+    .card:hover { border-color: var(--green); transform: translateY(-3px); }
+    .card-image { width: 100%; height: 190px; object-fit: cover; background: var(--beige); }
+    .card-body { padding: 22px; }
+    .card-body h3 { margin: 6px 0 10px; font-size: 19px; }
+    .card-body p { color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .card-link { color: var(--green); font-size: 12px; font-weight: 700; }
+
+    .page { padding: 60px 0 90px; }
+    .page-heading { padding-bottom: 26px; margin-bottom: 30px; border-bottom: 1px solid var(--border); }
+    .breadcrumb { margin-bottom: 12px; color: var(--muted); font-size: 12px; }
+    .breadcrumb button { border: 0; padding: 0; background: none; color: inherit; }
+    .page-heading h1 { margin: 0; font-size: clamp(30px, 4vw, 40px); letter-spacing: -.03em; }
+    .page-heading p { margin: 10px 0 0; color: var(--muted); font-size: 14px; }
+    .content-panel { padding: clamp(20px, 4vw, 42px); background: white; border: 1px solid var(--border); border-radius: 10px; }
+    .content-panel h2 { font-size: 25px; }
+    .content-panel p { font-size: 14px; line-height: 2; color: #495057; }
+    .content-panel li { margin: 9px 0; font-size: 14px; color: #495057; }
+
+    .program-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .program-tabs button {
+      padding: 10px 14px; border: 1px solid var(--border); border-radius: 4px;
+      background: white; color: #495057; font-size: 12px; font-weight: 600;
+    }
+    .program-tabs button.active { background: var(--green); color: white; border-color: var(--green); }
+
+    .notice-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 20px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; background: var(--beige); border: 1px solid var(--border); border-radius: 5px; }
+    .filters button { border: 0; border-radius: 3px; padding: 7px 12px; background: transparent; color: var(--muted); font-size: 12px; }
+    .filters button.active { background: white; color: var(--green); font-weight: 700; }
+    .search { width: min(100%, 290px); position: relative; }
+    .search input { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 4px; background: white; font-size: 12px; }
+
+    .list-box { overflow: hidden; border: 1px solid var(--border); border-radius: 9px; background: white; }
+    .list-row { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 19px 22px; text-align: left; border: 0; border-bottom: 1px solid var(--border); background: white; }
+    .list-row:last-child { border-bottom: 0; }
+    .list-row:hover { background: #F9F7F3; }
+    .list-row.pinned { background: #FCFAF7; }
+    .list-row h3 { margin: 7px 0 0; font-size: 15px; font-family: 'Noto Sans KR', sans-serif; }
+    .list-meta { color: var(--muted); font-size: 11px; }
+    .tag { display: inline-block; padding: 2px 7px; margin-right: 5px; border-radius: 3px; background: var(--beige); color: var(--green); font-size: 11px; font-weight: 700; }
+    .important { background: #FFF4D8; color: #825A00; }
+    .detail { padding: clamp(20px, 4vw, 40px); background: white; border: 1px solid var(--border); border-radius: 10px; }
+    .detail h2 { margin: 18px 0; font-size: 25px; }
+    .detail-content { min-height: 180px; padding: 20px 0; white-space: pre-wrap; font-size: 14px; line-height: 2; }
+    .summary-box { padding: 18px; background: #F5F2EB; border: 1px solid var(--border); border-radius: 6px; margin: 22px 0; }
+    .detail-actions { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 22px; border-top: 1px solid var(--border); }
+    .empty { padding: 45px 20px; text-align: center; color: var(--muted); background: white; border: 1px solid var(--border); border-radius: 9px; font-size: 13px; }
+
+    .activity-card { width: 100%; padding: 22px; margin-bottom: 15px; border: 1px solid var(--border); border-radius: 9px; background: white; text-align: left; }
+    .activity-card:hover { border-color: var(--green); }
+    .activity-card h3 { margin: 10px 0; font-size: 18px; }
+    .activity-card p { margin: 0; color: #495057; font-size: 13px; }
+    .activity-details { padding: 15px; margin: 10px 0; border: 1px solid var(--border); background: var(--ivory); border-radius: 4px; font-size: 13px; }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { font-size: 12px; font-weight: 700; color: #495057; }
+    .field input, .field textarea, .field select { width: 100%; padding: 11px; border: 1px solid var(--border); border-radius: 4px; background: white; font-size: 13px; }
+    .field textarea { min-height: 150px; resize: vertical; }
+    .consent { display: flex; align-items: flex-start; gap: 9px; font-size: 12px; color: #495057; }
+    .form-note { font-size: 12px; color: var(--muted); }
+
+    footer { background: #25372F; color: #E9EEE9; padding: 48px 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 30px; }
+    footer h3 { margin-top: 0; color: white; font-size: 17px; }
+    footer p, footer button { color: #D0D8D1; font-size: 12px; line-height: 1.9; }
+    footer button { display: block; border: 0; background: none; padding: 3px 0; text-align: left; }
+    footer button:hover { color: white; text-decoration: underline; }
+    .copyright { margin-top: 30px; padding-top: 18px; border-top: 1px solid #496055; color: #B9C6BC; font-size: 11px; }
+
+    .modal-backdrop { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 18px; background: rgba(0,0,0,.6); }
+    .modal { width: min(100%, 560px); max-height: 90vh; overflow-y: auto; padding: 25px; background: var(--ivory); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 20px 60px #0003; }
+    .modal h2 { margin-top: 0; font-size: 21px; }
+    .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+    .hidden { display: none !important; }
+
+    @media (max-width: 900px) {
+      nav { gap: 12px; }
+      nav button { font-size: 12px; }
+      .brand { min-width: auto; }
+      .card-grid { gap: 12px; }
+      .card-body { padding: 16px; }
+    }
+
+    @media (max-width: 720px) {
+      .nav-wrap { padding: 12px 18px; }
+      nav { display: none; }
+      .menu-toggle { display: block; }
+      .hero { min-height: 430px; }
+      .hero-content { padding: 65px 0; }
+      .hero p { font-size: 14px; }
+      .about-grid, .card-grid, .footer-grid { grid-template-columns: 1fr; }
+      .card-image { height: 220px; }
+      .section { padding: 52px 0; }
+      .page { padding: 40px 0 60px; }
+      .container { width: min(100% - 32px, 1050px); }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .list-row { padding: 16px; }
+      .list-row h3 { font-size: 14px; }
+      .list-row .list-meta:last-child { display: none; }
+      .values-strip { gap: 10px 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">사람과 사람을 잇고 배움과 나눔을 실천하는 우리두리사회적협동조합</div>
+
+  <header>
+    <div class="nav-wrap">
+      <a href="#home" class="brand" onclick="navigate('home');return false">
+        <img src="/assets/aistudio/KakaoTalk_20260915_104043912_7928f6e8.png" alt="우리두리 로고" onerror="this.style.display='none'">
+        <span class="brand-name">우리두리사회적협동조합<small>WOORIDOORI SOCIAL COOPERATIVE</small></span>
+      </a>
+
+      <nav id="desktopNav">
+        <button data-page="home" onclick="navigate('home')">홈</button>
+        <button data-page="about-greeting" onclick="navigate('about-greeting')">우리두리 소개</button>
+        <button data-page="program-art-therapy" onclick="navigate('program-art-therapy')">주요 사업</button>
+        <button data-page="notices" onclick="navigate('notices')">공지사항</button>
+        <button data-page="activities" onclick="navigate('activities')">활동 소식</button>
+        <button data-page="contact" onclick="navigate('contact')">문의하기</button>
+      </nav>
+
+      <button class="menu-toggle" onclick="toggleMobile()" aria-label="메뉴 열기">☰ 메뉴</button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <button onclick="navigate('home')">홈</button>
+      <button onclick="navigate('about-greeting')">이사장 인사말</button>
+      <button onclick="navigate('about-mission')">설립 목적</button>
+      <button onclick="navigate('program-art-therapy')">미술치료</button>
+      <button onclick="navigate('program-shared-school')">경기공유학교</button>
+      <button onclick="navigate('program-women-governance')">경기여성거버넌스</button>
+      <button onclick="navigate('notices')">공지사항</button>
+      <button onclick="navigate('activities')">활동 소식</button>
+      <button onclick="navigate('contact')">문의하기</button>
+    </div>
+  </header>
+
+  <main id="app"></main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h3>우리두리사회적협동조합</h3>
+        <p>경기도 양주시를 기반으로 지역주민의 권익 증진과 복지 향상, 지역사회 공헌을 위해 활동하는 사회적협동조합입니다.</p>
+        <p>사람과 사람을 잇고 배움과 나눔을 실천합니다.</p>
+      </div>
+      <div>
+        <h3>바로가기</h3>
+        <button onclick="navigate('about-greeting')">우리두리 소개</button>
+        <button onclick="navigate('program-art-therapy')">미술치료</button>
+        <button onclick="navigate('program-shared-school')">경기공유학교</button>
+        <button onclick="navigate('program-women-governance')">경기여성거버넌스</button>
+      </div>
+      <div>
+        <h3>소식 및 문의</h3>
+        <button onclick="navigate('notices')">공지사항</button>
+        <button onclick="navigate('activities')">활동 소식</button>
+        <button onclick="navigate('contact')">온라인 문의</button>
+        <button onclick="openPrivacy()">개인정보 처리 안내</button>
+        <button onclick="openAdmin()">사무국 접수내역 관리 (담당자 전용)</button>
+      </div>
+    </div>
+    <div class="container copyright">© 2026 우리두리사회적협동조합. All rights reserved.</div>
+  </footer>
+
+  <div id="modalRoot"></div>
+
+  <script>
+    const ORG = {
+      name: '우리두리사회적협동조합',
+      region: '경기도 양주시',
+      slogan: '사람과 사람을 잇고, 배움과 나눔을 실천합니다.',
+      description: '우리두리사회적협동조합은 지역주민의 권익 증진과 복지 향상, 지역사회 공헌을 목적으로 활동합니다.',
+      heroImage: '/src/assets/images/hero_children_community_1793068333683.jpg',
+      spaceImage: '/src/assets/images/child_friendly_community_space_1793068334313.jpg'
+    };
+
+    const PROGRAMS = {
+      'program-art-therapy': {
+        id: 'art-therapy',
+        name: '미술치료',
+        tagline: '그림과 표현을 통해 마음을 이해하고 성장하는 시간',
+        summary: '미술 활동을 매개로 자신의 감정과 생각을 표현하고, 건강한 관계와 정서적 성장을 지원하는 프로그램입니다.',
+        target: '아동 및 프로그램 참여 대상자',
+        image: '/src/assets/images/art_therapy_child_1793068334055.jpg',
+        purpose: ['자유로운 미술 표현을 통한 자기 이해', '정서적 안정과 긍정적인 관계 형성', '참여자의 특성과 필요를 고려한 활동 지원'],
+        details: [
+          ['프로그램 안내', '참여자의 상황과 목적에 맞춘 미술 활동을 운영합니다.'],
+          ['활동 방향', '창작 과정에서 감정 표현과 상호작용을 지원합니다.'],
+          ['참여 안내', '세부 일정과 참여 가능 여부는 사무국에 문의해 주세요.']
+        ],
+        schedule: '운영 일정과 모집 여부는 변동될 수 있습니다. 최신 일정은 사무국에 문의해 주세요.',
+        apply: ['온라인 문의 페이지에서 미술치료를 선택해 문의해 주세요.', '담당자가 프로그램 운영 여부와 참여 방법을 안내합니다.']
+      },
+      'program-shared-school': {
+        id: 'shared-school',
+        name: '경기공유학교',
+        tagline: '지역의 자원을 연결하는 배움의 기회',
+        summary: '지역사회 자원과 배움의 기회를 연결하고, 참여자 중심의 다양한 교육 활동을 지원합니다.',
+        target: '지역 내 교육 프로그램 참여 대상자',
+        image: '/assets/aistudio/program_shared_school.jpg',
+        purpose: ['지역사회 기반의 배움 기회 확대', '다양한 경험을 통한 참여자 성장 지원', '지역 자원과 교육 활동의 연결'],
+        details: [
+          ['사업 방향', '지역의 교육 자원과 프로그램 참여 기회를 연결합니다.'],
+          ['운영 안내', '세부 과정과 일정은 사업별 운영 계획에 따라 달라질 수 있습니다.'],
+          ['참여 안내', '현재 모집 여부와 참여 조건은 사무국에 확인해 주세요.']
+        ],
+        schedule: '세부 운영 일정은 사업별 안내를 확인해 주세요.',
+        apply: ['온라인 문의 페이지에서 경기공유학교를 선택해 문의해 주세요.', '담당자가 확인 가능한 사업 정보를 안내합니다.']
+      },
+      'program-women-governance': {
+        id: 'women-governance',
+        name: '경기여성거버넌스',
+        tagline: '함께 참여하고 연결하는 지역사회',
+        summary: '지역사회 구성원의 참여와 소통을 바탕으로 협력 관계를 넓히고 지역사회 발전을 모색합니다.',
+        target: '지역사회 및 관련 활동 참여자',
+        image: '/assets/aistudio/program_women_governance.png',
+        purpose: ['지역사회 구성원의 참여와 소통', '다양한 주체 간 네트워크 강화', '지역의 의견과 활동을 연결'],
+        details: [
+          ['사업 취지', '지역사회 내 소통과 협력의 기반을 마련합니다.'],
+          ['주요 방향', '관련 기관 및 지역 구성원과의 연계 활동을 추진합니다.'],
+          ['참여 안내', '사업별 진행 상황과 참여 가능 여부는 사무국에 문의해 주세요.']
+        ],
+        schedule: '운영 상황에 따라 일정이 변경될 수 있습니다.',
+        apply: ['온라인 문의 페이지에서 경기여성거버넌스를 선택해 문의해 주세요.', '담당자가 사업 관련 안내를 제공합니다.']
+      }
+    };
+
+    const DEFAULT_NOTICES = [
+      {
+        id: 'notice-1', title: '우리두리사회적협동조합 홈페이지 안내',
+        category: '안내', date: '2026.10.15', author: '사무국',
+        content: '우리두리사회적협동조합 공식 홈페이지입니다. 기관 소개와 주요 사업, 활동 소식을 확인하실 수 있습니다.',
+        views: 0, isPinned: true
+      },
+      {
+        id: 'notice-2', title: '프로그램 운영 및 참여 문의 안내',
+        category: '공지', date: '2026.10.18', author: '사무국',
+        content: '미술치료, 경기공유학교, 경기여성거버넌스 관련 운영 일정과 참여 방법은 온라인 문의를 통해 확인해 주세요.',
+        views: 0, isPinned: false
+      },
+      {
+        id: 'notice-3', title: '기관 활동 소식 확인 안내',
+        category: '소식', date: '2026.10.22', author: '사무국',
+        content: '우리두리의 지역사회 활동과 사업 진행 소식을 활동 소식 메뉴에서 확인하실 수 있습니다.',
+        views: 0, isPinned: false
+      }
+    ];
+
+    const DEFAULT_ACTIVITIES = [
+      {
+        id: 'activity-1', title: '지역사회 협력 및 네트워크 활동',
+        category: '지역사회 협력', date: '2026.10.08', location: '경기도 양주시',
+        summary: '지역사회 내 협력 관계를 형성하고 관련 활동을 공유하기 위한 네트워크 활동입니다.',
+        details: ['지역사회 협력 활동과 연계 가능성을 검토합니다.', '관련 기관 및 지역 구성원과 소통합니다.'],
+        keyOutcomes: ['지역사회 협력 기반 강화']
+      },
+      {
+        id: 'activity-2', title: '주민 참여 및 배움 기회 연계',
+        category: '주민 참여', date: '2026.09.24', location: '경기도 양주시',
+        summary: '주민의 참여와 학습 기회를 확대하기 위한 활동을 추진합니다.',
+        details: ['주민 참여 기회와 학습 활동을 살펴봅니다.', '지역의 자원을 활용한 연계 방안을 검토합니다.'],
+        keyOutcomes: ['주민 참여 확대']
+      },
+      {
+        id: 'activity-3', title: '지역사회 공헌 활동 기록',
+        category: '지역사회 공헌', date: '2026.09.11', location: '경기도 양주시',
+        summary: '지역사회 공헌과 교육·문화 활동을 위한 실천 과정을 기록합니다.',
+        details: ['활동 목적과 진행 내용을 기록합니다.', '향후 연계할 수 있는 활동을 검토합니다.'],
+        keyOutcomes: ['지역사회 공헌 활동 지속']
+      }
+    ];
+
+    function readStore(key, fallback) {
+      try {
+        const value = localStorage.getItem(key);
+        return value ? JSON.parse(value) : fallback;
+      } catch (error) {
+        return fallback;
+      }
+    }
+
+    let notices = readStore('wooridoori_notices', DEFAULT_NOTICES);
+    let activities = readStore('wooridoori_activities', DEFAULT_ACTIVITIES);
+    let currentPage = location.hash.replace('#', '') || 'home';
+    let selectedNoticeId = null;
+    let selectedActivityId = null;
+    let noticeCategory = '전체';
+    let noticeSearch = '';
+    let currentProgram = 'program-art-therapy';
+
+    const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, ch => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[ch]));
+
+    function navigate(page) {
+      currentPage = page;
+      selectedNoticeId = null;
+      selectedActivityId = null;
+      if (location.hash !== '#' + page) history.pushState({page}, '', '#' + page);
+      document.getElementById('mobileNav').classList.remove('open');
+      render();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    window.addEventListener('popstate', () => {
+      currentPage = location.hash.replace('#', '') || 'home';
+      render();
+    });
+
+    function toggleMobile() {
+      document.getElementById('mobileNav').classList.toggle('open');
+    }
+
+    function pageHeader(title, description = '') {
+      return `<div class="page-heading">
+        <div class="breadcrumb"><button onclick="navigate('home')">홈</button> / <strong style="color:var(--green)">${escapeHTML(title)}</strong></div>
+        <h1>${escapeHTML(title)}</h1>
+        ${description ? `<p>${escapeHTML(description)}</p>` : ''}
+      </div>`;
+    }
+
+    function renderHome() {
+      return `
+        <section class="hero">
+          <img class="hero-image" src="${ORG.heroImage}" alt="" onerror="this.style.display='none'">
+          <div class="hero-shade"></div>
+          <div class="hero-content">
+            <span class="eyebrow">경기도 양주시 · 비영리 사회적협동조합</span>
+            <h1>사람과 사람을 잇고,<br>배움과 나눔을 실천합니다.</h1>
+            <p>${ORG.description}</p>
+            <div class="actions">
+              <button class="btn btn-primary" onclick="navigate('about-greeting')">우리두리 알아보기</button>
+              <button class="btn" onclick="navigate('program-art-therapy')">주요 사업 살펴보기</button>
+            </div>
+          </div>
+        </section>
+        <div class="values-strip"><span>상호 협력</span><span>지역사회 공헌</span><span>배움과 성장</span><span>주민 참여</span></div>
+
+        <section class="section">
+          <div class="container about-grid">
+            <div class="about-copy">
+              <span class="eyebrow">ABOUT WOORIDOORI</span>
+              <h2 class="serif" style="font-size:30px">함께 살아가는 지역사회를 만듭니다</h2>
+              <p>${ORG.description} 주민 학습과 커뮤니티 공간을 연계하고, 교육·문화·체험 프로그램을 통해 지역사회와 함께 성장하고자 합니다.</p>
+              <button class="btn btn-primary" onclick="navigate('about-greeting')">기관 소개 보기 →</button>
+            </div>
+            <img class="about-image" src="${ORG.spaceImage}" alt="지역사회 공간" onerror="this.style.display='none'">
+          </div>
+        </section>
+
+        <section class="section section-alt">
+          <div class="container">
+            <div class="section-head"><span class="eyebrow">OUR PROGRAMS</span><h2>우리두리 주요 사업</h2><p>지역사회와 함께하는 배움과 참여의 프로그램입니다.</p></div>
+            <div class="card-grid">
+              ${Object.entries(PROGRAMS).map(([id, p]) => `
+                <article class="card">
+                  <img class="card-image" src="${p.image}" alt="${escapeHTML(p.name)}" onerror="this.style.display='none'">
+                  <div class="card-body">
+                    <span class="eyebrow">${escapeHTML(p.id.toUpperCase())}</span>
+                    <h3>${escapeHTML(p.name)}</h3>
+                    <p>${escapeHTML(p.summary)}</p>
+                    <button class="card-link" onclick="navigate('${id}')">사업 자세히 보기 →</button>
+                  </div>
+                </article>`).join('')}
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-head"><span class="eyebrow">LATEST NEWS</span><h2>공지사항</h2><p>우리두리의 공지와 프로그램 운영 안내를 확인하세요.</p></div>
+            ${noticeRows(notices.slice().sort((a,b) => Number(!!b.isPinned)-Number(!!a.isPinned)).slice(0,4))}
+            <div class="actions"><button class="btn" onclick="navigate('notices')">공지사항 전체 보기 →</button></div>
+          </div>
+        </section>
+
+        <section class="section section-alt">
+          <div class="container">
+            <div class="section-head"><span class="eyebrow">OUR ACTIVITIES</span><h2>활동 소식</h2><p>지역사회와 함께한 활동을 기록합니다.</p></div>
+            ${activities.slice(0,3).map(a => `
+              <button class="activity-card" onclick="openActivity('${a.id}')">
+                <div class="list-meta">${escapeHTML(a.category)} · ${escapeHTML(a.date)} · ${escapeHTML(a.location)}</div>
+                <h3>${escapeHTML(a.title)}</h3><p>${escapeHTML(a.summary)}</p>
+              </button>`).join('')}
+            <button class="btn" onclick="navigate('activities')">활동 소식 전체 보기 →</button>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container content-panel">
+            <span class="eyebrow">CONTACT US</span>
+            <h2>우리두리와 함께하고 싶으신가요?</h2>
+            <p>프로그램 참여와 협력, 기관 활동에 관한 문의를 남겨주세요.</p>
+            <button class="btn btn-primary" onclick="navigate('contact')">온라인 문의하기 →</button>
+          </div>
+        </section>`;
+    }
+
+    function renderGreeting() {
+      return `<section class="page"><div class="container">
+        ${pageHeader('이사장 인사말', '우리두리사회적협동조합을 방문해 주셔서 감사합니다.')}
+        <div class="content-panel">
+          <img src="${ORG.spaceImage}" alt="우리두리 활동 공간" class="about-image" style="margin-bottom:24px" onerror="this.style.display='none'">
+          <span class="eyebrow">GREETING</span>
+          <h2>사람과 사람을 잇고, 함께 성장하는 우리두리</h2>
+          <p>우리두리사회적협동조합 홈페이지를 찾아주신 여러분을 진심으로 환영합니다.</p>
+          <p>우리두리는 지역주민의 권익 증진과 복지 향상, 지역사회 공헌을 위해 함께 고민하고 실천하는 협동의 공간입니다. 미술치료, 경기공유학교, 경기여성거버넌스 등 다양한 활동을 통해 지역사회 구성원들이 배움과 나눔을 경험할 수 있도록 노력하고 있습니다.</p>
+          <p>앞으로도 지역의 이웃과 함께 소통하고 협력하며, 주민의 삶에 도움이 되는 활동을 꾸준히 이어가겠습니다.</p>
+          <p style="text-align:right;margin-top:35px">우리두리사회적협동조합 이사장 및 조합원 일동</p>
+          <button class="btn btn-primary" onclick="navigate('about-mission')">설립 목적 및 주요 활동 →</button>
+        </div>
+      </div></section>`;
+    }
+
+    function renderMission() {
+      return `<section class="page"><div class="container">
+        ${pageHeader('설립 목적 및 주요 활동', '지역주민과 함께 만드는 지속 가능한 지역사회')}
+        <div class="content-panel">
+          <img src="${ORG.heroImage}" alt="우리두리 지역사회 활동" class="about-image" style="margin-bottom:24px" onerror="this.style.display='none'">
+          <span class="eyebrow">OUR MISSION</span>
+          <h2>우리두리가 추구하는 가치</h2>
+          <p>${ORG.description}</p>
+          <ul>
+            <li>지역주민의 권익 증진과 복지 향상</li>
+            <li>상호 협력과 자발적 참여를 통한 공동체 성장</li>
+            <li>지역의 자원과 주민을 연결하는 활동</li>
+            <li>교육·문화·체험 프로그램을 통한 평생학습 확산</li>
+            <li>사회적경제기업 및 유관기관과의 협력 네트워크 구축</li>
+          </ul>
+          <button class="btn btn-primary" onclick="navigate('program-art-therapy')">주요 사업 보기 →</button>
+        </div>
+      </div></section>`;
+    }
+
+    function renderProgram() {
+      const p = PROGRAMS[currentPage] || PROGRAMS['program-art-therapy'];
+      return `<section class="page"><div class="container">
+        ${pageHeader('주요 사업', '우리두리사회적협동조합의 사업을 소개합니다.')}
+        <div class="program-tabs">
+          ${Object.entries(PROGRAMS).map(([id, item]) => `<button class="${currentPage===id?'active':''}" onclick="navigate('${id}')">${escapeHTML(item.name)}</button>`).join('')}
+        </div>
+        <div class="content-panel">
+          <img src="${p.image}" alt="${escapeHTML(p.name)}" class="about-image" style="margin-bottom:25px" onerror="this.style.display='none'">
+          <span class="eyebrow">PROGRAM</span>
+          <h2>${escapeHTML(p.name)}</h2>
+          <p><strong>${escapeHTML(p.tagline)}</strong></p>
+          <p>${escapeHTML(p.summary)}</p>
+          <p><strong>대상:</strong> ${escapeHTML(p.target)}</p>
+          <h3>사업 목적</h3>
+          <ul>${p.purpose.map(x=>`<li>${escapeHTML(x)}</li>`).join('')}</ul>
+          <h3>주요 내용</h3>
+          ${p.details.map(d=>`<div class="activity-details"><strong>${escapeHTML(d[0])}</strong><br>${escapeHTML(d[1])}</div>`).join('')}
+          <h3>운영 일정 안내</h3><p>${escapeHTML(p.schedule)}</p>
+          <h3>참여 안내</h3>
+          <ul>${p.apply.map(x=>`<li>${escapeHTML(x)}</li>`).join('')}</ul>
+          <button class="btn btn-primary" onclick="navigate('contact');document.getElementById('programInterest').value='${p.name}'">프로그램 문의하기 →</button>
+        </div>
+      </div></section>`;
+    }
+
+    function noticeRows(items) {
+      if (!items.length) return '<div class="empty">검색 조건에 일치하는 공지사항이 없습니다.</div>';
+      return `<div class="list-box">${items.map((n, idx) => `
+        <button class="list-row ${n.isPinned?'pinned':''}" onclick="openNotice('${n.id}')">
+          <div>
+            <div class="list-meta">
+              ${n.isPinned?'<span class="tag important">중요</span>':`#${items.length-idx}`}
+              <span class="tag">${escapeHTML(n.category)}</span> · ${escapeHTML(n.date)}
+            </div>
+            <h3>${escapeHTML(n.title)}</h3>
+          </div>
+          <div class="list-meta">${escapeHTML(n.author)}　›</div>
+        </button>`).join('')}</div>`;
+    }
+
+    function renderNotices() {
+      const selected = notices.find(n=>n.id===selectedNoticeId);
+      if (selected) {
+        return `<section class="page"><div class="container">
+          ${pageHeader('공지사항', '우리두리의 공식 공지 및 프로그램 운영 안내')}
+          <article class="detail">
+            <button class="btn" onclick="selectedNoticeId=null;render()">← 공지사항 목록으로 돌아가기</button>
+            <div class="list-meta" style="margin-top:24px">
+              <span class="tag">${escapeHTML(selected.category)}</span>
+              ${selected.isPinned?'<span class="tag important">중요 공지</span>':''}
+              · ${escapeHTML(selected.date)} · ${escapeHTML(selected.author)} · 조회 ${selected.views}
+            </div>
+            <h2>${escapeHTML(selected.title)}</h2>
+            <div class="detail-content">${escapeHTML(selected.content)}</div>
+            <div class="detail-actions">
+              <button class="btn" onclick="selectedNoticeId=null;render()">목록으로</button>
+              <button class="btn btn-primary" onclick="navigate('contact')">관련 문의하기</button>
+            </div>
+          </article>
+        </div></section>`;
+      }
+
+      const filtered = notices.filter(n =>
+        (noticeCategory==='전체' || n.category===noticeCategory) &&
+        (n.title+' '+n.content).toLowerCase().includes(noticeSearch.toLowerCase())
+      ).slice().sort((a,b)=>Number(!!b.isPinned)-Number(!!a.isPinned));
+
+      return `<section class="page"><div class="container">
+        ${pageHeader('공지사항', '우리두리사회적협동조합의 공식 공지 및 프로그램 운영 안내를 확인하실 수 있습니다.')}
+        <div class="notice-toolbar">
+          <div class="filters">
+            ${['전체','공지','안내','모집'].map(c=>`<button class="${noticeCategory===c?'active':''}" onclick="noticeCategory='${c}';render()">${c}</button>`).join('')}
+          </div>
+          <div class="search"><input value="${escapeHTML(noticeSearch)}" placeholder="제목 또는 내용 검색" oninput="noticeSearch=this.value;renderNoticesListOnly()"></div>
+        </div>
+        <div id="noticeResults">${noticeRows(filtered)}</div>
+        <div class="actions"><button class="btn" onclick="openAddNotice()">공지 등록 (관리자)</button></div>
+      </div></section>`;
+    }
+
+    function renderNoticesListOnly() {
+      const selected = notices.find(n=>n.id===selectedNoticeId);
+      if (selected) return;
+      const filtered = notices.filter(n=>
+        (noticeCategory==='전체'||n.category===noticeCategory) &&
+        (n.title+' '+n.content).toLowerCase().includes(noticeSearch.toLowerCase())
+      ).slice().sort((a,b)=>Number(!!b.isPinned)-Number(!!a.isPinned));
+      const root = document.getElementById('noticeResults');
+      if (root) root.innerHTML = noticeRows(filtered);
+    }
+
+    function openNotice(id) {
+      const notice = notices.find(n=>n.id===id);
+      if (!notice) return;
+      notice.views = (notice.views||0)+1;
+      saveNotices();
+      selectedNoticeId=id;
+      render();
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    function renderActivities() {
+      const selected = activities.find(a=>a.id===selectedActivityId);
+      if (selected) {
+        return `<section class="page"><div class="container">
+          ${pageHeader('활동 소식', '지역사회 네트워크 구축, 공간 나눔, 주민 참여 프로그램 운영 등 우리두리의 실천 기록입니다.')}
+          <article class="detail">
+            <button class="btn" onclick="selectedActivityId=null;render()">← 활동 목록으로 돌아가기</button>
+            <div class="list-meta" style="margin-top:24px"><span class="tag">${escapeHTML(selected.category)}</span> · ${escapeHTML(selected.date)} · ${escapeHTML(selected.location)}</div>
+            <h2>${escapeHTML(selected.title)}</h2>
+            <div class="summary-box"><strong style="color:var(--green)">활동 개요</strong><p>${escapeHTML(selected.summary)}</p></div>
+            <h3>세부 진행 내용 및 기록</h3>
+            ${(selected.details||[]).map(d=>`<div class="activity-details">✓　${escapeHTML(d)}</div>`).join('')}
+            ${selected.keyOutcomes?.length?`<h3>주요 성과 및 향후 과제</h3><p>${selected.keyOutcomes.map(escapeHTML).join(' · ')}</p>`:''}
+            <div class="detail-actions">
+              <button class="btn" onclick="selectedActivityId=null;render()">목록으로</button>
+              <button class="btn btn-primary" onclick="navigate('contact')">프로그램 및 협력 문의</button>
+            </div>
+          </article>
+        </div></section>`;
+      }
+
+      return `<section class="page"><div class="container">
+        ${pageHeader('활동 소식', '지역사회 네트워크 구축, 공간 나눔, 주민 참여 프로그램 운영 등 우리두리의 실천 기록입니다.')}
+        ${activities.length ? activities.map(a=>`
+          <button class="activity-card" onclick="openActivity('${a.id}')">
+            <div class="list-meta"><span class="tag">${escapeHTML(a.category)}</span> · ${escapeHTML(a.date)} · ${escapeHTML(a.location)}</div>
+            <h3>${escapeHTML(a.title)}</h3>
+            <p>${escapeHTML(a.summary)}</p>
+            <div class="card-link" style="margin-top:12px">자세히 보기 →</div>
+          </button>`).join('') : '<div class="empty">등록된 활동 소식이 없습니다.</div>'}
+        <div class="summary-box" style="text-align:center">
+          <strong>우리두리사회적협동조합의 활동은 사실에 기초하여 투명하게 기록됩니다.</strong>
+          <p>확인되지 않은 협약 및 성과는 임의로 기재하지 않으며, 추진되는 사업 현황은 지속적으로 업데이트됩니다.</p>
+        </div>
+      </div></section>`;
+    }
+
+    function openActivity(id) {
+      selectedActivityId = id;
+      navigateWithoutReset('activities');
+    }
+
+    function navigateWithoutReset(page) {
+      currentPage = page;
+      if (location.hash !== '#'+page) history.pushState({page},'', '#'+page);
+      render();
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    function renderContact() {
+      return `<section class="page"><div class="container">
+        ${pageHeader('온라인 문의', '프로그램 참여와 협력 관련 문의를 남겨주세요.')}
+        <div class="content-panel">
+          <h2>문의하기</h2>
+          <p>작성해 주신 문의 내용을 확인하고 안내해 드리겠습니다. 이 단일 HTML 버전은 브라우저에 문의 내용을 저장하며, 이메일이나 서버로 자동 전송하지 않습니다.</p>
+          <form id="contactForm" class="form-grid">
+            <div class="field"><label for="contactName">성함 *</label><input id="contactName" name="name" required></div>
+            <div class="field"><label for="contactPhone">연락처 *</label><input id="contactPhone" name="phone" required placeholder="연락 가능한 전화번호"></div>
+            <div class="field"><label for="contactEmail">이메일</label><input id="contactEmail" name="email" type="email"></div>
+            <div class="field"><label for="contactOrg">소속 기관</label><input id="contactOrg" name="organization"></div>
+            <div class="field full"><label for="programInterest">관심 사업</label>
+              <select id="programInterest" name="programInterest">
+                <option value="">선택해 주세요</option>
+                <option>미술치료</option><option>경기공유학교</option><option>경기여성거버넌스</option><option>기타 문의</option>
+              </select>
+            </div>
+            <div class="field full"><label for="contactTitle">문의 제목 *</label><input id="contactTitle" name="title" required></div>
+            <div class="field full"><label for="contactMessage">문의 내용 *</label><textarea id="contactMessage" name="message" required></textarea></div>
+            <div class="field full">
+              <label class="consent"><input type="checkbox" id="agreePrivacy" required> 개인정보 수집 및 이용에 동의합니다. 이름과 연락처 등 문의 처리에 필요한 정보를 이 브라우저에 저장합니다. *</label>
+              <p class="form-note">개인정보를 입력한 경우 공유 컴퓨터에서는 사용 후 저장된 문의 내역을 확인해 주세요.</p>
+            </div>
+            <div class="field full"><button class="btn btn-primary" type="submit">문의 내용 저장하기</button></div>
+          </form>
+          <div id="contactReceipt" class="summary-box hidden"></div>
+        </div>
+      </div></section>`;
+    }
+
+    function render() {
+      document.querySelectorAll('#desktopNav button').forEach(b => b.classList.toggle('active', b.dataset.page===currentPage || (currentPage.startsWith('program-')&&b.dataset.page==='program-art-therapy')));
+      const app = document.getElementById('app');
+      if (currentPage==='home') app.innerHTML=renderHome();
+      else if (currentPage==='about-greeting') app.innerHTML=renderGreeting();
+      else if (currentPage==='about-mission') app.innerHTML=renderMission();
+      else if (PROGRAMS[currentPage]) app.innerHTML=renderProgram();
+      else if (currentPage==='notices') app.innerHTML=renderNotices();
+      else if (currentPage==='activities') app.innerHTML=renderActivities();
+      else if (currentPage==='contact') app.innerHTML=renderContact();
+      else { currentPage='home'; app.innerHTML=renderHome(); }
+      if (currentPage==='contact') attachContactForm();
+    }
+
+    function saveNotices() {
+      try { localStorage.setItem('wooridoori_notices', JSON.stringify(notices)); }
+      catch(e) { console.error('공지사항 저장 실패',e); }
+    }
+
+    function saveActivities() {
+      try { localStorage.setItem('wooridoori_activities', JSON.stringify(activities)); }
+      catch(e) { console.error('활동 소식 저장 실패',e); }
+    }
+
+    function attachContactForm() {
+      const form = document.getElementById('contactForm');
+      if (!form) return;
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const fd = new FormData(form);
+        const name = String(fd.get('name')||'').trim();
+        const phone = String(fd.get('phone')||'').trim();
+        const title = String(fd.get('title')||'').trim();
+        const message = String(fd.get('message')||'').trim();
+        if (!name||!phone||!title||!message||!document.getElementById('agreePrivacy').checked) {
+          alert('필수 항목을 확인해 주세요.');
+          return;
+        }
+        const record = {
+          id: 'WD-'+Date.now(),
+          name, phone, email: String(fd.get('email')||''),
+          organization: String(fd.get('organization')||''),
+          programInterest: String(fd.get('programInterest')||''),
+          title, message, agreedPrivacy: true,
+          createdAt: new Date().toLocaleString('ko-KR'),
+          status: '접수완료'
+        };
+        try {
+          const all = readStore('wooridoori_inquiries', []);
+          all.unshift(record);
+          localStorage.setItem('wooridoori_inquiries', JSON.stringify(all));
+          form.classList.add('hidden');
+          const receipt = document.getElementById('contactReceipt');
+          receipt.classList.remove('hidden');
+          receipt.innerHTML = `<strong>문의 내용이 이 브라우저에 저장되었습니다.</strong><p>접수번호: ${escapeHTML(record.id)}</p><p>서버나 이메일로 전송된 것은 아닙니다. 담당자에게 전달하려면 별도의 전송 기능이 필요합니다.</p><button type="button" class="btn" onclick="resetContactForm()">새 문의 작성</button>`;
+        } catch(err) {
+          alert('브라우저 저장에 실패했습니다. 저장 공간이나 브라우저 설정을 확인해 주세요.');
+        }
+      });
+    }
+
+    function resetContactForm() { render(); }
+
+    function openAddNotice() {
+      document.getElementById('modalRoot').innerHTML = `
+        <div class="modal-backdrop" onclick="if(event.target===this)closeModal()">
+          <div class="modal">
+            <h2>새 공지사항 등록</h2>
+            <p class="form-note">이 버전에는 별도의 관리자 로그인 기능이 없습니다. 등록 내용은 현재 브라우저에 저장됩니다.</p>
+            <form id="addNoticeForm">
+              <div class="field"><label>분류</label><select name="category"><option>공지</option><option>안내</option><option>모집</option><option>소식</option></select></div>
+              <div class="field" style="margin-top:12px"><label>제목</label><input name="title" required></div>
+              <div class="field" style="margin-top:12px"><label>작성자</label><input name="author" value="사무국"></div>
+              <div class="field" style="margin-top:12px"><label>내용</label><textarea name="content" required></textarea></div>
+              <label class="consent" style="margin-top:12px"><input type="checkbox" name="pinned"> 상단 중요 공지로 고정</label>
+              <div class="modal-actions"><button type="button" class="btn" onclick="closeModal()">취소</button><button type="submit" class="btn btn-primary">등록하기</button></div>
+            </form>
+          </div>
+        </div>`;
+      document.getElementById('addNoticeForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const fd = new FormData(e.currentTarget);
+        notices.unshift({
+          id:'notice-'+Date.now(),
+          category:String(fd.get('category')),
+          title:String(fd.get('title')).trim(),
+          author:String(fd.get('author')).trim()||'사무국',
+          content:String(fd.get('content')).trim(),
+          date:new Date().toISOString().slice(0,10).replace(/-/g,'.'),
+          views:0, isPinned:fd.get('pinned')==='on'
+        });
+        saveNotices();
+        closeModal();
+        render();
+        alert('공지사항이 현재 브라우저에 저장되었습니다.');
+      });
+    }
+
+    function openPrivacy() {
+      document.getElementById('modalRoot').innerHTML = `
+        <div class="modal-backdrop" onclick="if(event.target===this)closeModal()">
+          <div class="modal">
+            <h2>개인정보 수집 및 이용 안내</h2>
+            <p>문의 처리를 위해 성함, 연락처, 문의 내용 및 선택적으로 이메일과 소속 기관 정보를 입력받습니다.</p>
+            <p>이 단일 HTML 버전은 입력 정보를 이용 중인 브라우저의 로컬 저장소에 저장합니다. 서버 전송은 수행하지 않습니다.</p>
+            <p>브라우저 데이터 삭제 시 저장된 내용이 사라질 수 있습니다. 실제 운영 전에는 개인정보 처리 목적, 보유 기간, 파기 절차와 접근 권한을 실제 운영 방식에 맞게 확정해야 합니다.</p>
+            <div class="modal-actions"><button class="btn btn-primary" onclick="closeModal()">확인</button></div>
+          </div>
+        </div>`;
+    }
+
+    function openAdmin() {
+      const records = readStore('wooridoori_inquiries', []);
+      document.getElementById('modalRoot').innerHTML = `
+        <div class="modal-backdrop" onclick="if(event.target===this)closeModal()">
+          <div class="modal">
+            <h2>문의 접수내역</h2>
+            <p class="form-note">브라우저에 저장된 문의만 표시됩니다. 이 기능에는 관리자 인증이 없으므로 실제 개인정보를 다루는 공개 사이트에서는 사용하지 마세요.</p>
+            ${records.length ? records.map(r=>`
+              <div class="activity-details">
+                <strong>${escapeHTML(r.title)}</strong>
+                <p>${escapeHTML(r.name)} · ${escapeHTML(r.phone)} · ${escapeHTML(r.createdAt)}</p>
+                <p>${escapeHTML(r.message)}</p>
+                <span class="list-meta">${escapeHTML(r.programInterest)} · ${escapeHTML(r.status)}</span>
+              </div>`).join('') : '<div class="empty">저장된 문의가 없습니다.</div>'}
+            <div class="modal-actions">
+              <button class="btn" onclick="exportInquiries()">JSON 백업</button>
+              <button class="btn btn-primary" onclick="closeModal()">닫기</button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function exportInquiries() {
+      const data = readStore('wooridoori_inquiries', []);
+      const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href=url; a.download='wooridoori_inquiries.json'; a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function closeModal() { document.getElementById('modalRoot').innerHTML=''; }
+
+    render();
+  </script>
+</body>
+</html>
